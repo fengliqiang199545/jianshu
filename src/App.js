@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react';
-import {GlobalStyle} from './style'
-
+import {Provider} from 'react-redux'
+import {GlobalStyle,HelloWrapper} from './style'
+import Header from './common/Header';
+import store from "./store";
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -11,14 +13,11 @@ class App extends React.Component {
 
     render() {
         return (
-            <Fragment>
-                <GlobalStyle>
-                    <div>
-                        hello
-                    </div>
-                    );
-                </GlobalStyle>
-            </Fragment>
+            <div>
+                <Provider store={store}>
+                    <Header/>
+                </Provider>
+            </div>
         )
 
     }
