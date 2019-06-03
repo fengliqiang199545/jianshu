@@ -3,7 +3,7 @@ import {HeaderWrapper, Logo, Nav,NavItem,NavSearch,Addtion,Button,SearchWrapper}
 import {IconGlobal} from '../../statics/icon/iconfont';
 import {CSSTransition} from  'react-transition-group';
 import {connect} from 'react-redux';
-
+import {actionCreator} from '../Header/store'
 const Header =(props)=>{
     return (
         <Fragment>
@@ -42,27 +42,21 @@ const Header =(props)=>{
             </HeaderWrapper>
         </Fragment>
     )
-}
+};
 
 
 const mapStateToPropsJ=(state)=>{
     return {
-        focused: state.focused,
+        focused: state.get('header').get('focused'),
     }
 };
 const mapDispatchToPropsJ=(dispatch)=>{
     return {
         handleInputFocus(){
-            const action = {
-                type:'search_focus',
-            };
-            dispatch(action);
+            dispatch(actionCreator.searchFocus());
         },
         handleInputBlur(){
-            const action = {
-                type: 'blur_focus',
-            };
-            dispatch(action);
+            dispatch(actionCreator.blurFocus());
         }
     }
 };
