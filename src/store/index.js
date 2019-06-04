@@ -1,5 +1,6 @@
 import {createStore, compose, applyMiddleware} from "redux";
 import reducer from './reducer'
+import thunk from 'redux-thunk';
 
 const composeEnhancers =
     typeof window === 'object' &&
@@ -8,7 +9,7 @@ const composeEnhancers =
         }) : compose;
 
 const enhancer = composeEnhancers(
-
+    applyMiddleware(thunk)
 );
 
 const store = createStore(reducer,enhancer);
